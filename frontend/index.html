@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Bookstore</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 8px 5px;
+      font-size: 1em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #bookTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    #bookTable th, #bookTable td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    #bookTable th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #addBookSection, #viewBooksSection {
+      display: none;
+    }
+
+    .back-button {
+      background-color: transparent;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-bottom: 10px;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Online Bookstore</h1>
+
+    <div id="addBookSection">
+      <input id="title" placeholder="Title">
+      <input id="author" placeholder="Author">
+      <input id="price" placeholder="Price" type="number">
+      <div>
+        <button id="addBtn">Add Book</button>
+        <button id="viewBtn">View Books</button>
+      </div>
+    </div>
+
+    <div id="viewBooksSection">
+      <button class="back-button" id="backBtn">← Back</button>
+      <table id="bookTable">
+        <thead>
+          <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="bookTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
