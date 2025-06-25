@@ -1,4 +1,4 @@
-name: CI - Bookstore App
+name: CI - Bookstore App (Frontend + Backend)
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  backend:
+    name: 🐍 Backend - Python API
     runs-on: ubuntu-latest
 
     steps:
@@ -19,19 +20,40 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: 📦 Install dependencies
+    - name: 📦 Install backend dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: ✅ Run tests
+    - name: ✅ Run backend tests
       run: |
-        pytest || echo "⚠️ No tests found"
+        cd backend
+        pytest || echo "No backend tests found"
 
-    # Optional: Build Docker image
-    # - name: 🐳 Build Docker image
-    #   run: docker build -t fastapi-bookstore .
+  frontend:
+    name: 🌐 Frontend - Build App
+    runs-on: ubuntu-latest
 
-    # Optional: Deployment step
-    # - name: 🚀 Deploy to hosting platform
-    #   run: echo "Add your deploy script or action here"
+    steps:
+    - name: ⬇️ Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🔧 Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: 📦 Install frontend dependencies
+      run: |
+        cd frontend
+        npm install
+
+    - name: 🏗️ Build frontend app
+      run: |
+        cd frontend
+        npm run build
+
+    # Optional: Add frontend tests
+    # - name: ✅ Run frontend tests
+    #   run: |
+    #     cd frontend
+    #     npm test
